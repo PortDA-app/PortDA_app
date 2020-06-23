@@ -1,42 +1,120 @@
-import * as React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  SafeAreaView,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 import Constants from 'expo-constants';
 import AssetExample from './components/AssetExample';
-import Icon from 'react-native-vector-icons/Fontisto';
-import { Card,ListItem,Header,Button  } from 'react-native-elements';
-const users = [
- {
-    name: 'brynn',
-    avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
- }
-]
-export default function App() {
-  return ([
-    <Header
-      leftComponent={{ icon: 'menu', color: '#fff' }}
-      centerComponent={{ text: 'PortDA', style: { color: '#fff' } }}
-      rightComponent={{ icon: 'home', color: '#fff' }}
-    />,
-    <Card
-      title='HELLO WORLD'>
-      <Text style={{marginBottom: 10}}>
-        The idea with React Native Elements is more about component structure than actual design.
-      </Text>
-      <Button
-        icon={{name: 'code'}}
-        backgroundColor='#03A9F4'
-        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-        title='VIEW NOW' />
-    </Card>
-  ]);
+import Icon from 'react-native-vector-icons/Feather';
+import { Card, ListItem, Header, Button } from 'react-native-elements';
+import TabNavigator from './TabNav';
+import { createAppContainer } from 'react-navigation';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from './HomeScreen';
+import SearchScreen from './SearchScreen';
+import PostsScreen from './PostsScreen';
+import ProfileScreen from './ProfileScreen';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from '@react-navigation/drawer';
+
+const Tab = createMaterialBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      activeColor="white"
+      labelStyle={{ fontSize: 15 }}
+      barStyle={{
+        backgroundColor: '#146eb4',
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderColor: 'black',
+      }}>
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: () => <Icon name="home" size={25} color="white" />,
+        }}
+      />
+      <Tab.Screen
+        name="Posts"
+        component={PostsScreen}
+        options={{
+          tabBarLabel: 'Posts',
+          tabBarIcon: () => <Icon name="list" size={25} color="white" />,
+        }}
+      />
+      <Tab.Screen
+        name="NewPost"
+        options={{
+          tabBarLabel: 'New Posts',
+          tabBarIcon: () => <Icon name="plus-circle" size={25} color="white" />,
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          tabBarLabel: 'Search',
+          tabBarIcon: () => <Icon name="search" size={25} color="white" />,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: () => <Icon name="user" size={25} color="white" />,
+        }}
+      />
+    </Tab.Navigator>
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-  }
-});
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      <DrawerItemList {...props} />
+      <DrawerItem
+        label="Close drawer"
+        onPress={() => props.navigation.closeDrawer()}
+      />
+      <DrawerItem
+        label="Toggle drawer"
+        onPress={() => props.navigation.toggleDrawer()}
+      />
+    </DrawerContentScrollView>
+  );
+}
+
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
+  return (
+    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
+<Drawer.Screen name="Profile" component={ProfileScreen}/>
+    </Drawer.Navigator>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
+  );
+}
