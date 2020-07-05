@@ -14,6 +14,7 @@ import NotificationsScreen from "./NotificationsScreen";
 import SearchScreen from "./SearchScreen";
 import HomeScreen from "./HomeScreen";
 import PostsScreen from "./PostsScreen";
+import NewPostScreen from "./NewPostScreen";
 import Footer from "./Footer";
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -49,7 +50,8 @@ const TabNavigator = createMaterialBottomTabNavigator({
     alignContent: 'stretch',}
     }
   },
-  /*NewPost : {
+  NewPost : {
+    screen: NewPostScreen,
     navigationOptions: {
       tabBarLabel: 'New Post',
       tabBarIcon: () => (
@@ -62,7 +64,7 @@ const TabNavigator = createMaterialBottomTabNavigator({
     flexDirection: 'row',
     alignContent: 'stretch'}
     }
-  },*/
+  },
   Search : {
     screen: SearchScreen,
     navigationOptions: {

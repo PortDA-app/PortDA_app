@@ -4,8 +4,6 @@ import {
   View,
   StyleSheet
 } from 'react-native';
-import Footer from "./Footer";
-import TabNavigator from "./TabNav";
 
 class HomeScreen extends Component {
   render () {

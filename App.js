@@ -13,7 +13,6 @@ import Constants from 'expo-constants';
 import AssetExample from './components/AssetExample';
 import Icon from 'react-native-vector-icons/Feather';
 import { Card, ListItem, Header, Button } from 'react-native-elements';
-import TabNavigator from './TabNav';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -21,6 +20,8 @@ import HomeScreen from './HomeScreen';
 import SearchScreen from './SearchScreen';
 import PostsScreen from './PostsScreen';
 import ProfileScreen from './ProfileScreen';
+import NewPostScreen from './NewPostScreen';
+import NotificationsScreen from './NotificationsScreen';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -60,10 +61,19 @@ function MyTabs() {
       />
       <Tab.Screen
         name="NewPost"
+        component={NewPostScreen}
         options={{
           tabBarLabel: 'New Posts',
           tabBarIcon: () => <Icon name="plus-circle" size={25} color="white" />,
         }}
+      />
+      <Tab.Screen
+      name="Notifications"
+      component={NotificationsScreen}
+      options={{
+        tabBarLabel: 'Notifications',
+        tabBarIcon: () => <Icon name="bell" size={25} color="white" />
+      }}
       />
       <Tab.Screen
         name="Search"

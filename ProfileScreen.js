@@ -153,10 +153,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: 'black',
     padding: 5,
+    paddingTop: 20,
   },
   profile: {
     flex: 3,

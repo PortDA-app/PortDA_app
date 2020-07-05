@@ -19,10 +19,7 @@ class PostsScreen extends Component {
               backgroundColor: 'white',
             }}>
             <View
-              style={[
-                styles.profileInfo,
-                { borderColor: 'grey', borderWidth: 1, borderStyle: 'solid' },
-              ]}>
+              style={styles.profileInfo}>
               <View>
                 <Image
                   style={styles.tinyLogo}
@@ -33,12 +30,12 @@ class PostsScreen extends Component {
                 />
               </View>
               <View style={{ flex: 9, margin: 15 }}>
-                <Text>PortDA</Text>
-                <Text>Virtual Agency Network</Text>
+                <Text style={{fontWeight: 'bold', fontSize: 15}}>PortDA</Text>
+                <Text style={styles.text}>Virtual Agency Network</Text>
               </View>
             </View>
             <View style={styles.profileInfo}>
-              <Text>
+              <Text style={styles.text}>
                 This is the description of the post.
               </Text>
             </View>
@@ -56,9 +53,6 @@ class PostsScreen extends Component {
                 flex: 1,
                 flexDirection: 'row',
                 width: '100%',
-                borderColor: 'grey',
-                borderWidth: 1,
-                borderStyle: 'solid',
                 padding: 5,
               }}>
               <TouchableOpacity style={styles.icon}>
@@ -111,8 +105,6 @@ const styles = StyleSheet.create({
     width: 75,
     height: 75,
     borderRadius: 200 / 2,
-    borderWidth: 0.5,
-    borderColor: 'black',
     margin: 5,
     flex: 1,
   },
@@ -128,6 +120,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 5,
+    paddingTop: 20,
   },
   headerText: {
     fontSize: 20,
@@ -135,6 +128,9 @@ const styles = StyleSheet.create({
     flex: 1,
     color: '#fff',
   },
+  text: {
+    fontSize: 12
+  }
 });
 
 export default PostsScreen;
