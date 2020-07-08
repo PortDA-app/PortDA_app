@@ -1,22 +1,27 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  View,
-  StyleSheet
-} from 'react-native';
+import { StyleSheet, Button, View, SafeAreaView, Text, Alert } from 'react-native';
+import {createAppContainer} from 'react-native';
+import {createStackNavigator} from 'react-navigation-stack';
+
 import Footer from "./Footer";
 import TabNavigator from "./TabNav";
+import SignupScreen  from "./SignupScreen";
+import LoginScreen  from "./LoginScreen";
+import PostsScreen from './PostsScreen';
 
-class HomeScreen extends Component {
+
+
+export default class HomeScreen extends React.Component {
   render () {
     return (
-      <View style={styles.container}>
-        <Text>Home Screen</Text>
+        <View style={styles.container}>
+        <Text>Welcome Home</Text>
         
       </View>
-    );
+      );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -25,5 +30,3 @@ const styles = StyleSheet.create({
       alignItems: 'center'
   }
 });
-
-export default HomeScreen;

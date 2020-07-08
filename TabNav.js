@@ -49,20 +49,6 @@ const TabNavigator = createMaterialBottomTabNavigator({
     alignContent: 'stretch',}
     }
   },
-  /*NewPost : {
-    navigationOptions: {
-      tabBarLabel: 'New Post',
-      tabBarIcon: () => (
-        <Icon name="plus-circle" size={25} color="white" />
-      ),
-      barStyle: {backgroundColor: '#146eb4',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: 'black',
-    flexDirection: 'row',
-    alignContent: 'stretch'}
-    }
-  },*/
   Search : {
     screen: SearchScreen,
     navigationOptions: {
@@ -92,11 +78,7 @@ const TabNavigator = createMaterialBottomTabNavigator({
     flexDirection: 'row',
     alignContent: 'stretch'}
     }
-  },
-  Notifications: {
-    screen: NotificationsScreen   
-  },
-  
+  }
 });
 
 export default TabNavigator;

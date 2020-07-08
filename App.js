@@ -17,16 +17,16 @@ import TabNavigator from './TabNav';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator,createSwitchNavigator} from 'react-navigation-stack';
 import HomeScreen from './HomeScreen';
 import SearchScreen from './SearchScreen';
 import PostsScreen from './PostsScreen';
 import ProfileScreen from './ProfileScreen';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from '@react-navigation/drawer';
+import NewPostScreen from './NewPostScreen';
+import SignupScreen from './SignupScreen';
+import LoginScreen from './LoginScreen';
+
+
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -60,6 +60,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="NewPost"
+        component={NewPostScreen}
         options={{
           tabBarLabel: 'New Posts',
           tabBarIcon: () => <Icon name="plus-circle" size={25} color="white" />,
@@ -81,40 +82,29 @@ function MyTabs() {
           tabBarIcon: () => <Icon name="user" size={25} color="white" />,
         }}
       />
+      
     </Tab.Navigator>
   );
 }
 
-function CustomDrawerContent(props) {
-  return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      <DrawerItem
-        label="Close drawer"
-        onPress={() => props.navigation.closeDrawer()}
-      />
-      <DrawerItem
-        label="Toggle drawer"
-        onPress={() => props.navigation.toggleDrawer()}
-      />
-    </DrawerContentScrollView>
-  );
-}
 
-const Drawer = createDrawerNavigator();
+const AppStackNavigator = createStackNavigator({
+   
+   Login :LoginScreen,
+   Home  :HomeScreen,
+   Signup:SignupScreen,
+   Posts :PostsScreen
 
-function MyDrawer() {
-  return (
-    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
-<Drawer.Screen name="Profile" component={ProfileScreen}/>
-    </Drawer.Navigator>
-  );
-}
+})
 
-export default function App() {
-  return (
+const SigninTabs = createAppContainer(AppStackNavigator);
+
+export default class App extends Component{
+  render() {
+    return(
     <NavigationContainer>
-      <MyTabs />
-    </NavigationContainer>
-  );
+       <SigninTabs/>
+       </NavigationContainer>
+    );
+  }
 }
