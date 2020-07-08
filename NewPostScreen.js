@@ -8,12 +8,12 @@ import {
   TextInput,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import HeaderComponent from './components/HeaderComponent';
+
 function NewPostScreen() {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Share Post</Text>
-      </View>
+      <HeaderComponent style={styles.back}/>
       <View style={styles.profileInfo}>
         <View>
           <Image
@@ -65,6 +65,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: 'white',
+  },
+  back: {
+	 backgroundColor: '#f90', 
   },
   tinyLogo: {
     width: 50,

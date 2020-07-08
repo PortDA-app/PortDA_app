@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Footer from './Footer';
 import Icon from 'react-native-vector-icons/Feather';
-
+import HeaderComponent from './components/HeaderComponent';
 class NotificationsScreen extends Component {
   render() {
     let row = [];
@@ -37,9 +37,7 @@ class NotificationsScreen extends Component {
     }
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>PortDA</Text>
-        </View>
+        <HeaderComponent />
         <ScrollView>{row}</ScrollView>
       </View>
     );

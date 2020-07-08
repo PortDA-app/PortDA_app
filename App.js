@@ -10,7 +10,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Constants from 'expo-constants';
-import AssetExample from './components/AssetExample';
+
+import HeaderComponent from './components/HeaderComponent';
 import Icon from 'react-native-vector-icons/Feather';
 import { Card, ListItem, Header, Button } from 'react-native-elements';
 import { createAppContainer } from 'react-navigation';
@@ -22,6 +23,7 @@ import PostsScreen from './PostsScreen';
 import ProfileScreen from './ProfileScreen';
 import NewPostScreen from './NewPostScreen';
 import NotificationsScreen from './NotificationsScreen';
+import CreatePostScreen from './CreatePostScreen';
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -38,16 +40,17 @@ function MyTabs() {
       activeColor="white"
       labelStyle={{ fontSize: 15 }}
       barStyle={{
-        backgroundColor: '#146eb4',
+        backgroundColor: '#f90',
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: '#f90',
       }}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
           tabBarLabel: 'Home',
+          activeBackgroundColor: '#146eb4',
           tabBarIcon: () => <Icon name="home" size={25} color="white" />,
         }}
       />
@@ -95,36 +98,12 @@ function MyTabs() {
   );
 }
 
-function CustomDrawerContent(props) {
-  return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItemList {...props} />
-      <DrawerItem
-        label="Close drawer"
-        onPress={() => props.navigation.closeDrawer()}
-      />
-      <DrawerItem
-        label="Toggle drawer"
-        onPress={() => props.navigation.toggleDrawer()}
-      />
-    </DrawerContentScrollView>
-  );
-}
 
-const Drawer = createDrawerNavigator();
-
-function MyDrawer() {
-  return (
-    <Drawer.Navigator drawerContent={props => <CustomDrawerContent {...props} />}>
-<Drawer.Screen name="Profile" component={ProfileScreen}/>
-    </Drawer.Navigator>
-  );
-}
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <MyTabs />
+  return ([
+	<NavigationContainer>
+    <MyTabs />
     </NavigationContainer>
-  );
+  ]);
 }

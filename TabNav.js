@@ -27,7 +27,7 @@ const TabNavigator = createMaterialBottomTabNavigator({
       tabBarIcon: () => (
         <Icon name="home" size={25} color="white" />
       ),
-      barStyle: {backgroundColor: '#146eb4',
+  barStyle: {backgroundColor: 'red',
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: 'black',

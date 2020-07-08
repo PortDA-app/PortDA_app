@@ -21,8 +21,7 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import HomeScreen from "./HomeScreen";
-
+import HeaderComponent from './components/HeaderComponent';
 
 
 export default function ProfileScreen ({navigation}) {
@@ -45,15 +44,7 @@ export default function ProfileScreen ({navigation}) {
 
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <View style={{ flex: 1 }}>
-            <TouchableOpacity onPress={() => navigation.openDrawer()}>
-              <Icon name="menu" size={25} color="white" />
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.headerText}>PortDA</Text>
-          <View style={{ flex: 1 }}></View>
-        </View>
+       <HeaderComponent />
         <ScrollView style={styles.scrollView}>
           <View style={styles.profile}>
             <View style={styles.profileInfo}>

@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import HeaderComponent from './components/HeaderComponent';
 
 class PostsScreen extends Component {
   render() {
@@ -72,15 +73,7 @@ class PostsScreen extends Component {
           }
     return (
       <View style={styles.container}>
-      <View style={styles.header}>
-          <View style={{ flex: 1 }}>
-            <TouchableOpacity onPress={() => navigation.openDrawer()}>
-              <Icon name="menu" size={25} color="white" />
-            </TouchableOpacity>
-          </View>
-          <Text style={styles.headerText}>PortDA</Text>
-          <View style={{ flex: 1 }}></View>
-        </View>
+      <HeaderComponent />
         <ScrollView>
           {row}
         </ScrollView>
