@@ -10,10 +10,10 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Constants from 'expo-constants';
-import AssetExample from './components/AssetExample';
+
+import HeaderComponent from './components/HeaderComponent';
 import Icon from 'react-native-vector-icons/Feather';
 import { Card, ListItem, Header, Button } from 'react-native-elements';
-import TabNavigator from './TabNav';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -27,6 +27,14 @@ import SignupScreen from './SignupScreen';
 import LoginScreen from './LoginScreen';
 
 
+import NotificationsScreen from './NotificationsScreen';
+import CreatePostScreen from './CreatePostScreen';
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from '@react-navigation/drawer';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -37,16 +45,17 @@ function MyTabs() {
       activeColor="white"
       labelStyle={{ fontSize: 15 }}
       barStyle={{
-        backgroundColor: '#146eb4',
+        backgroundColor: '#f90',
         borderStyle: 'solid',
         borderWidth: 1,
-        borderColor: 'black',
+        borderColor: '#f90',
       }}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
           tabBarLabel: 'Home',
+          activeBackgroundColor: '#146eb4',
           tabBarIcon: () => <Icon name="home" size={25} color="white" />,
         }}
       />
@@ -65,6 +74,14 @@ function MyTabs() {
           tabBarLabel: 'New Posts',
           tabBarIcon: () => <Icon name="plus-circle" size={25} color="white" />,
         }}
+      />
+      <Tab.Screen
+      name="Notifications"
+      component={NotificationsScreen}
+      options={{
+        tabBarLabel: 'Notifications',
+        tabBarIcon: () => <Icon name="bell" size={25} color="white" />
+      }}
       />
       <Tab.Screen
         name="Search"
@@ -87,24 +104,10 @@ function MyTabs() {
   );
 }
 
-
-const AppStackNavigator = createStackNavigator({
-   
-   Login :LoginScreen,
-   Home  :HomeScreen,
-   Signup:SignupScreen,
-   Posts :PostsScreen
-
-})
-
-const SigninTabs = createAppContainer(AppStackNavigator);
-
-export default class App extends Component{
-  render() {
-    return(
-    <NavigationContainer>
-       <SigninTabs/>
-       </NavigationContainer>
-    );
-  }
+export default function App() {
+  return ([
+	<NavigationContainer>
+    <MyTabs />
+    </NavigationContainer>
+  ]);
 }

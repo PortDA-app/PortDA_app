@@ -14,6 +14,7 @@ import NotificationsScreen from "./NotificationsScreen";
 import SearchScreen from "./SearchScreen";
 import HomeScreen from "./HomeScreen";
 import PostsScreen from "./PostsScreen";
+import NewPostScreen from "./NewPostScreen";
 import Footer from "./Footer";
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -26,7 +27,7 @@ const TabNavigator = createMaterialBottomTabNavigator({
       tabBarIcon: () => (
         <Icon name="home" size={25} color="white" />
       ),
-      barStyle: {backgroundColor: '#146eb4',
+  barStyle: {backgroundColor: 'red',
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: 'black',

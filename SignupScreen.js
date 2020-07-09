@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import TabNavigator from "./TabNav";
 import HomeScreen from "./HomeScreen";
 
+
 class SignupScreen extends Component {
   render () {
 	// const [selectedValue, setSelectedValue] = useState("Ship operator");

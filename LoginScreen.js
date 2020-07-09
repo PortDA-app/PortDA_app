@@ -22,6 +22,7 @@ class LoginScreen extends Component {
 			secureTextEntry={true}
 			placeholder='Enter password'
 		/>
+    
 		
 		<Button title="Login" onPress={()=>this.props.navigation.navigate('Home')}/>
     <Text>New Here??</Text>
