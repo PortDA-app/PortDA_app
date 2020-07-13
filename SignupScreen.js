@@ -9,27 +9,65 @@ import HomeScreen from "./HomeScreen";
 
 
 class SignupScreen extends Component {
+
+	constructor(props){
+      super(props)
+      this.state = {
+        userEmail:'',
+        userPassword:'',
+        userRole:''
+      }
+    }
+
+    userRegister = () => {
+    	const {userEmail} = this.state;
+    	const {userPassword}= this.state;
+    	const {userRole} = this.state;
+
+    	fetch('https://www.portda.com/api/signup',{
+    		method:'post',
+    		headers:{
+            'Content-Type'  : 'application/json',
+            'PortDA-Allowed-Users': 'PortDA_Team',
+            'Authorization' : 'Basic YWRtaW5AcG9ydGRhLmNvbTo1MGNjYWQxMjE3NTI4NDEyNzMwMDdlMTUwMTE3YWViMjI3OTVmMDU4MzllYTg3N2M0NDcxMTc3MTUwYWZlNzlk'
+          },
+          body:JSON.stringify({
+            email:userEmail,
+            password:userPassword,
+            role:userRole
+          })
+    	})
+    	 .then((response)=>response.json())
+        .then((responseJson)=>{
+            // alert(responseJson);
+            // alert(JSON.stringify(responseJson));
+            alert(JSON.stringify(responseJson));
+            console.log(body);
+        })
+        .catch((error)=>{
+          console.error(error);
+        });
+    }
+
   render () {
-	// const [selectedValue, setSelectedValue] = useState("Ship operator");
+	
     return (
       <View style={styles.container}>
         <Input
 		  placeholder='Enter Email'
+		  onChangeText = {userEmail => this.setState({userEmail})}
 		/>
 		<Input
 			secureTextEntry={true}
 			placeholder='Enter password'
+			onChangeText = {userPassword => this.setState({userPassword})}
 		/>
-		<Picker 
-		style={{ height: 50, width: 1000,backgroundcolor:'grey' }}
-		>
-	        <Picker.Item label="Ship operator" value="3" />
-	        <Picker.Item label="Agent" value="2" />
-	        <Picker.Item label="Other" value="12" />
+		<Input
+			placeholder='Choose role'
+			onChangeText = {userRole => this.setState({userRole})}
+		 />
 
-	    </Picker>
-
-		<Button title="Register" onPress={()=>this.props.navigation.navigate('Login')}/>
+		<Button title="Register" onPress={this.userRegister}/>
         
       </View>
     );
